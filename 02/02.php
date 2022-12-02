@@ -12,29 +12,25 @@ $myThrowScores = [
     'C' => 3
 ];
 
-$opponentLoseMap = [
-    'A' => 'B',
-    'B' => 'C',
-    'C' => 'A',
-];
-
 $opponentWinMap = [
     'A' => 'C',
     'B' => 'A',
     'C' => 'B'
 ];
 
+$opponentLoseMap = array_flip($opponentWinMap);
+
 $totalScore = 0;
 foreach ($rounds as $round) {
     $throws = explode(' ', $round);
     // draw
-    if($throws[1] === 'Y') {
+    if ($throws[1] === 'Y') {
         $totalScore += ($myThrowScores[$round[0]] + 3);
         continue;
     }
 
     // lose
-    if($throws[1] === 'X') {
+    if ($throws[1] === 'X') {
         $totalScore += $myThrowScores[$opponentWinMap[$round[0]]];
         continue;
     }
@@ -43,4 +39,5 @@ foreach ($rounds as $round) {
     $totalScore += ($myThrowScores[$opponentLoseMap[$round[0]]] + 6);
 }
 
+// 14184
 echo $totalScore . "\n";

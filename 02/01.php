@@ -43,4 +43,5 @@ foreach ($rounds as $round) {
     $totalScore += 6;
 }
 
+// 13675
 echo $totalScore . "\n";
